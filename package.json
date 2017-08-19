@@ -1,21 +1,21 @@
 {
-  "name": "aurelia-rollbar",
+  "name": "au-rollbar",
   "version": "0.1.0",
   "description": "Easy way to integrate Rollbar into Aurelia",
   "keywords": [
     "aurelia",
     "rollbar"
   ],
-  "homepage": "https://github.com/Jenselme/aurelia-rollbar",
+  "homepage": "https://github.com/Jenselme/au-rollbar",
   "bugs": {
-    "url": "https://github.com/Jenselme/aurelia-rollbar/issues"
+    "url": "https://github.com/Jenselme/au-rollbar/issues"
   },
   "license": "MIT",
   "author": "Julien Enselme <jujens@jujens.eu> (http://www.jujens.eu)",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Jenselme/aurelia-rollbar"
+    "url": "https://github.com/Jenselme/au-rollbar"
   },
   "devDependencies": {
     "aurelia-tools": "^0.1.18",

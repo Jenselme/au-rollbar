@@ -1,16 +1,16 @@
-# aurelia-rollbar
+# au-rollbar
 
-[![npm Version](https://img.shields.io/npm/v/aurelia-piwik.svg)](https://www.npmjs.com/package/aurelia-rollbar)
+[![npm Version](https://img.shields.io/npm/v/aurelia-piwik.svg)](https://www.npmjs.com/package/au-rollbar)
 [![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Easy way to integrate Rollbar into Aurelia.
 
-Install it with `npm install aurelia-rollbar`.
+Install it with `npm install au-rollbar`.
 
-You then need to import it with `import RollbarAppender from 'aurelia-rollbar'` in your `main.js` file and configure it:
+You then need to import it with `import RollbarAppender from 'au-rollbar'` in your `main.js` file and configure it:
 
 ```javascript
-import RollbarAppender from 'aurelia-rollbar'
+import RollbarAppender from 'au-rollbar'
 import * as Logger from 'aurelia-logging';
 
 export function configure(aurelia) {
@@ -53,3 +53,5 @@ export function configure(aurelia) {
     aurelia.start().then(() => aurelia.setRoot('app', document.body));
 }
 ```
+
+You still have to configure Rollbar as described [here](https://rollbar.com/docs/notifier/rollbar.js/). Take a look at [this blog post](https://www.jujens.eu/posts/en/2017/Aug/19/rollbar-aurelia/) to learn more.
