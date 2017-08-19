@@ -11,7 +11,7 @@ export default class RollbarAppender {
 
     warn(logger, ...rest) {
         let mainArgs = rest[0];
-        this.getRollbar().warn(`WARN [${logger.id}] ${mainArgs}`, this._formatRest(rest));
+        this.getRollbar().warning(`WARN [${logger.id}] ${mainArgs}`, this._formatRest(rest));
     }
 
     error(logger, ...rest) {
@@ -36,7 +36,7 @@ export default class RollbarAppender {
             return {
                 debug: () => {},
                 info: () => {},
-                warn: () => {},
+                warning: () => {},
                 error: () => {},
             };
         }
