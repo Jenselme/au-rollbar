@@ -1,22 +1,22 @@
 let RollbarAppender = class RollbarAppender {
     debug(logger, ...rest) {
         let mainArgs = rest[0];
-        Rollbar.debug(`DEBUG [${logger.id}]: ${mainArgs}`, this._formatRest(rest));
+        this.getRollbar().debug(`DEBUG [${logger.id}]: ${mainArgs}`, this._formatRest(rest));
     }
 
     info(logger, ...rest) {
         let mainArgs = rest[0];
-        Rollbar.info(`INFO [${logger.id}]  ${mainArgs}`, this._formatRest(rest));
+        this.getRollbar().info(`INFO [${logger.id}]  ${mainArgs}`, this._formatRest(rest));
     }
 
     warn(logger, ...rest) {
         let mainArgs = rest[0];
-        Rollbar.warn(`WARN [${logger.id}] ${mainArgs}`, this._formatRest(rest));
+        this.getRollbar().warning(`WARN [${logger.id}] ${mainArgs}`, this._formatRest(rest));
     }
 
     error(logger, ...rest) {
         let mainArgs = rest[0];
-        Rollbar.error(`ERROR [${logger.id}]  ${mainArgs}`, this._formatRest(rest));
+        this.getRollbar().error(`ERROR [${logger.id}]  ${mainArgs}`, this._formatRest(rest));
     }
 
     _formatRest(rest) {
@@ -25,6 +25,23 @@ let RollbarAppender = class RollbarAppender {
         } catch (e) {
             return undefined;
         }
+    }
+
+    getRollbar() {
+        if (!window.Rollbar) {
+            if (console.warn) {
+                console.warn('Rollbar is not defined');
+            }
+
+            return {
+                debug: () => {},
+                info: () => {},
+                warning: () => {},
+                error: () => {}
+            };
+        }
+
+        return window.Rollbar;
     }
 };
 export { RollbarAppender as default };

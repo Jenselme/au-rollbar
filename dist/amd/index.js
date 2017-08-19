@@ -1,5 +1,5 @@
-define(["exports"], function (exports) {
-    "use strict";
+define(['exports'], function (exports) {
+    'use strict';
 
     Object.defineProperty(exports, "__esModule", {
         value: true
@@ -22,7 +22,7 @@ define(["exports"], function (exports) {
             }
 
             var mainArgs = rest[0];
-            Rollbar.debug("DEBUG [" + logger.id + "]: " + mainArgs, this._formatRest(rest));
+            this.getRollbar().debug('DEBUG [' + logger.id + ']: ' + mainArgs, this._formatRest(rest));
         };
 
         RollbarAppender.prototype.info = function info(logger) {
@@ -31,7 +31,7 @@ define(["exports"], function (exports) {
             }
 
             var mainArgs = rest[0];
-            Rollbar.info("INFO [" + logger.id + "]  " + mainArgs, this._formatRest(rest));
+            this.getRollbar().info('INFO [' + logger.id + ']  ' + mainArgs, this._formatRest(rest));
         };
 
         RollbarAppender.prototype.warn = function warn(logger) {
@@ -40,7 +40,7 @@ define(["exports"], function (exports) {
             }
 
             var mainArgs = rest[0];
-            Rollbar.warn("WARN [" + logger.id + "] " + mainArgs, this._formatRest(rest));
+            this.getRollbar().warning('WARN [' + logger.id + '] ' + mainArgs, this._formatRest(rest));
         };
 
         RollbarAppender.prototype.error = function error(logger) {
@@ -49,7 +49,7 @@ define(["exports"], function (exports) {
             }
 
             var mainArgs = rest[0];
-            Rollbar.error("ERROR [" + logger.id + "]  " + mainArgs, this._formatRest(rest));
+            this.getRollbar().error('ERROR [' + logger.id + ']  ' + mainArgs, this._formatRest(rest));
         };
 
         RollbarAppender.prototype._formatRest = function _formatRest(rest) {
@@ -58,6 +58,23 @@ define(["exports"], function (exports) {
             } catch (e) {
                 return undefined;
             }
+        };
+
+        RollbarAppender.prototype.getRollbar = function getRollbar() {
+            if (!window.Rollbar) {
+                if (console.warn) {
+                    console.warn('Rollbar is not defined');
+                }
+
+                return {
+                    debug: function debug() {},
+                    info: function info() {},
+                    warning: function warning() {},
+                    error: function error() {}
+                };
+            }
+
+            return window.Rollbar;
         };
 
         return RollbarAppender;
